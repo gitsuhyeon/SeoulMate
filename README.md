@@ -22,6 +22,7 @@
 
 ### [🇺🇸 English]
 **Seoul Mate** is a comprehensive platform designed to help foreigners and locals create location-based meetups and generate AI-driven, customized tour courses in Seoul. Developed as a 5-member team project, it features a modern Android client built with Jetpack Compose, a robust REST API powered by Spring Boot, and an intelligent AI server utilizing FastAPI.
+
 <img width="4270" height="2235" alt="Image" src="https://github.com/user-attachments/assets/125c48a7-a490-4d62-ac28-369c0b78e4b6" />
 ---
 
@@ -71,6 +72,7 @@
 
 > **Role:** Full-Stack Developer & DevOps  
 > **Key Focus:** 분산 환경 아키텍처 설계, AI 마이크로서비스 연동, 클라이언트-서버 간 통신 및 모니터링 파이프라인 구축
+
 
 ### 1. 분산 추적 및 인프라 모니터링 (DevOps & Logging)
 * **분산 환경 Trace-ID 구축:** 클라이언트(Android)부터 Spring Boot, FastAPI까지 이어지는 다중 서버 환경에서 요청 흐름을 추적하기 위해 커스텀 `MdcFilter` 구현. HTTP 헤더에 `X-Trace-Id`를 주입하여 트러블슈팅 시간을 획기적으로 단축.
