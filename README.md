@@ -22,7 +22,7 @@
 
 ### [🇺🇸 English]
 **Seoul Mate** is a comprehensive platform designed to help foreigners and locals create location-based meetups and generate AI-driven, customized tour courses in Seoul. Developed as a 5-member team project, it features a modern Android client built with Jetpack Compose, a robust REST API powered by Spring Boot, and an intelligent AI server utilizing FastAPI.
-
+<img width="4270" height="2235" alt="Image" src="https://github.com/user-attachments/assets/125c48a7-a490-4d62-ac28-369c0b78e4b6" />
 ---
 
 ## ✨ Key Features (주요 기능)
