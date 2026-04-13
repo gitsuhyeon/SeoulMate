@@ -13,12 +13,14 @@
   <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>
 </p>
 
-<img width="4270" height="2235" alt="Image" src="https://github.com/user-attachments/assets/125c48a7-a490-4d62-ac28-369c0b78e4b6" />
 
 ---
 
 
 ## 📖 Project Overview (프로젝트 소개)
+
+<img width="4270" height="2235" alt="Image" src="https://github.com/user-attachments/assets/125c48a7-a490-4d62-ac28-369c0b78e4b6" />
+
 
 ### [🇰🇷 Korean]
 **Seoul Mate**는 서울을 방문하는 외국인과 내국인이 함께 지역 기반의 모임을 만들고, AI를 활용해 맞춤형 서울 여행 코스를 생성할 수 있는 플랫폼입니다. 5인의 팀 프로젝트로 진행되었으며, 최신 Android UI 툴킷인 Jetpack Compose와 Spring Boot 기반의 안정적인 REST API, 그리고 FastAPI 기반의 AI 서버를 유기적으로 연동하여 구축되었습니다.
