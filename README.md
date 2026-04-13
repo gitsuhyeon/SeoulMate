@@ -76,7 +76,7 @@
 * **분산 환경 Trace-ID 구축:** 클라이언트(Android)부터 Spring Boot, FastAPI까지 이어지는 다중 서버 환경에서 요청 흐름을 추적하기 위해 커스텀 `MdcFilter` 구현. HTTP 헤더에 `X-Trace-Id`를 주입하여 트러블슈팅 시간을 획기적으로 단축.
 * **실시간 모니터링 관제탑(PLG 스택):** Grafana Cloud, Loki, Promtail, Prometheus를 연동하여 서버 메트릭 및 로그 중앙화. 장애 발생 시 Discord Webhook을 통한 실시간 알림 파이프라인 구축.
 * **클라우드 스토리지 비용 방어:** Promtail의 `pipeline_stages`를 튜닝하여 헬스체크(Actuator) 등 불필요한 로그를 정규식으로 필터링(Drop)함으로써 로그 스토리지 비용 최적화.
-* **CI/CD 파이프라인 고도화:** 팀원이 구축한 GitHub Actions 기반 배포 워크플로우를 개선하여, Firebase JSON 및 API Key 등 민감한 환경변수를 안전하게 주입하는 보안 파이프라인 완성.
+
 
 ### 2. AI 마이크로서비스 및 프롬프트 엔지니어링 (FastAPI & AI)
 * **독립적 AI 추천 엔진 구축:** LangChain과 OpenAI(gpt-4o-mini)를 활용하여 사용자의 여행 코스를 생성하는 FastAPI 마이크로서비스 분리 개발.
@@ -125,8 +125,10 @@
 
 * **Backend API (Spring Boot):** 
   * AWS 프리티어 환경에서 가용 메모리 최적화를 위해 Grafana Cloud로 로그를 외부 적재하도록 설계.
+    <img width="370" height="688" alt="Image" src="https://github.com/user-attachments/assets/b0624447-8c6e-4098-b10c-639ebff668f3" />
 * **AI Microservice (FastAPI):** 
   * render로 배포하여 Cold Start 있음, 인스턴스 활성화를 통해 응답 지연 최소화 관리.
+    <img width="1422" height="697" alt="Image" src="https://github.com/user-attachments/assets/55478873-0c9d-4462-b926-5ec782e14ad8" />
 * **Grafana Monitoring (with prometheus+loki):**
   * 로그 모니터링 진행중. discord와 연동해 에러 발생시 알림 발생.
     <img width="1422" height="722" alt="Image" src="https://github.com/user-attachments/assets/7c00fad1-eae4-463e-933f-f8623a39b041" />     
