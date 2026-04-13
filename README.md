@@ -85,22 +85,16 @@
 - Set up alert notifications using Discord Webhook
 - Filtered unnecessary logs (e.g., health check) to reduce storage usage
 
----
-
 ### 2. AI Service Integration (FastAPI)
 - Developed a separate FastAPI service for AI-based course recommendation
 - Integrated OpenAI API for generating travel courses
 - Structured responses using Pydantic models for consistent API output
 - Composed prompts using user input and external data
 
----
-
 ### 3. Backend (Spring Boot)
 - Implemented scheduled batch processing for public data updates
 - Developed Firebase JWT authentication filter
 - Applied API rate limiting using interceptor-based logic
-
----
 
 ### 4. Android Client
 - Set up MVVM architecture and introduced Hilt for dependency injection
@@ -118,22 +112,16 @@
 - Discord Webhook 알림 설정
 - 헬스체크 로그 등 불필요 로그 필터링 적용
 
----
-
 ### 2. AI 서비스 연동 (FastAPI)
 - AI 추천 기능을 별도 FastAPI 서비스로 분리 구현
 - OpenAI API 연동
 - Pydantic 기반 구조화된 응답 처리
 - 사용자 입력 및 외부 데이터를 활용한 프롬프트 구성
 
----
-
 ### 3. 백엔드 (Spring Boot)
 - 공공데이터 배치 처리 (Scheduler 기반)
 - Firebase JWT 인증 필터 구현
 - API 호출 제한 로직 적용
-
----
 
 ### 4. Android 클라이언트
 - MVVM 아키텍처 적용 및 Hilt 도입
@@ -143,6 +131,7 @@
 - 로그인/회원가입 기능 구현
 
 ---
+## 👥 Team
 - @gitsuhyeon — AI (FastAPI), Full-Stack
 - @hyw1222 — Backend (Spring Boot)
 - @faithjua — Frontend (Android)
