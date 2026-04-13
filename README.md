@@ -143,7 +143,11 @@
 - 로그인/회원가입 기능 구현
 
 ---
-
+- @gitsuhyeon — AI (FastAPI), Full-Stack
+- @hyw1222 — Backend (Spring Boot)
+- @faithjua — Frontend (Android)
+- ISC — Design
+- JHP — Planning
 
 
 ## 🛠 Getting Started (실행 방법)
@@ -173,7 +177,7 @@
 
 * **Backend API (Spring Boot):** 
   * AWS 프리티어 환경에서 가용 메모리 최적화를 위해 Grafana Cloud로 로그를 외부 적재하도록 설계.
-    <img width="370" height="688" alt="Image" src="https://github.com/user-attachments/assets/b0624447-8c6e-4098-b10c-639ebff668f3" />
+    <img width="370" height="688" alt="Image" src="https://github.com/user-attachments/assets/a7333cb3-d584-4b77-925e-78cb66003af3" />
 * **AI Microservice (FastAPI):** 
   * render로 배포하여 Cold Start 있음, 인스턴스 활성화를 통해 응답 지연 최소화 관리.
     <img width="1422" height="697" alt="Image" src="https://github.com/user-attachments/assets/55478873-0c9d-4462-b926-5ec782e14ad8" />
