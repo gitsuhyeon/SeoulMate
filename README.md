@@ -67,6 +67,35 @@
 
 ---
 
+## 🧑‍💻 담당 역할 및 기여 (My Contributions)
+
+> **Role:** Full-Stack Developer & DevOps  
+> **Key Focus:** 분산 환경 아키텍처 설계, AI 마이크로서비스 연동, 클라이언트-서버 간 통신 및 모니터링 파이프라인 구축
+
+### 1. 분산 추적 및 인프라 모니터링 (DevOps & Logging)
+* **분산 환경 Trace-ID 구축:** 클라이언트(Android)부터 Spring Boot, FastAPI까지 이어지는 다중 서버 환경에서 요청 흐름을 추적하기 위해 커스텀 `MdcFilter` 구현. HTTP 헤더에 `X-Trace-Id`를 주입하여 트러블슈팅 시간을 획기적으로 단축.
+* **실시간 모니터링 관제탑(PLG 스택):** Grafana Cloud, Loki, Promtail, Prometheus를 연동하여 서버 메트릭 및 로그 중앙화. 장애 발생 시 Discord Webhook을 통한 실시간 알림 파이프라인 구축.
+* **클라우드 스토리지 비용 방어:** Promtail의 `pipeline_stages`를 튜닝하여 헬스체크(Actuator) 등 불필요한 로그를 정규식으로 필터링(Drop)함으로써 로그 스토리지 비용 최적화.
+* **CI/CD 파이프라인 고도화:** 팀원이 구축한 GitHub Actions 기반 배포 워크플로우를 개선하여, Firebase JSON 및 API Key 등 민감한 환경변수를 안전하게 주입하는 보안 파이프라인 완성.
+
+### 2. AI 마이크로서비스 및 프롬프트 엔지니어링 (FastAPI & AI)
+* **독립적 AI 추천 엔진 구축:** LangChain과 OpenAI(gpt-4o-mini)를 활용하여 사용자의 여행 코스를 생성하는 FastAPI 마이크로서비스 분리 개발.
+* **데이터 기반 프롬프트 엔지니어링(RAG):** 사용자의 입력(예산, 인원)과 백엔드의 외부 데이터(착한 가격업소 정보, 실시간 혼잡도)를 프롬프트에 동적으로 주입하여 환각 현상(Hallucination)을 줄이고 쾌적한 코스를 추천하도록 최적화.
+* **안정적인 구조화 응답(Structured Output):** Pydantic 모델을 활용하여 AI의 응답을 클라이언트가 즉시 렌더링할 수 있는 규격화된 JSON 형태(`CourseResponse`, `Place`)로 강제 변환 처리.
+
+### 3. 백엔드 아키텍처 및 보안 (Spring Boot)
+* **데이터 배치(Batch) 자동화:** '착한 가격업소' 공공데이터를 매월 1일 새벽 3시에 Spring Scheduler를 통해 자동 업데이트하도록 설계. 지역명 기반 동적 프롬프트 매핑을 위한 데이터 정제 및 카테고리화 적용.
+* **Stateless 인증 필터 구현:** Firebase Admin SDK를 활용한 `FirebaseTokenFilter`를 직접 구현하여 JWT 검증 및 SecurityContext 인증 처리. 만료된 토큰에 대한 커스텀 401 예외 처리로 클라이언트 사용성 증대.
+* **API Rate Limiting (호출 제한):** 과도한 AI API 과금을 방지하기 위해 Bucket4j와 HandlerInterceptor를 도입하여 일일 호출 횟수 제한 로직 적용. 개발자 프리패스(Bypass) 로직을 병행하여 운영 안정성 확보.
+
+### 4. 프론트엔드 아키텍처 및 UI/UX (Android)
+* **클라이언트 아키텍처 제안:** MVVM 패턴과 Dagger Hilt(DI) 도입을 팀 내에 제안하고 초기 아키텍처를 세팅.
+* **NetworkModule 설계:** Retrofit 기반의 REST API 통신 모듈을 구축하고, 모든 API 요청에 자동으로 `X-Trace-Id`와 인증 토큰이 포함되도록 OkHttp Interceptor 구현.
+* **탄력적인 클라이언트 에러 핸들링:** AI 서버의 응답 지연(Timeout), 429(Too Many Requests), 401(Unauthorized) 등 예외 상황을 ViewModel과 Kotlin Flow를 활용해 캐치하여 직관적인 팝업/토스트로 처리.
+* **글로벌 서비스 대응(i18n):** Locale 설정을 적용하여 사용자의 국적 선택에 따라 UI 언어가 동적으로 변경되도록 다국어 처리 구현. 
+* **회원가입/로그인 화면 구현:** 회원가입 및 로그인 흐름(UI/API) End-to-End 완성.
+---
+
 ## 🛠 Getting Started (실행 방법)
 
 ### Prerequisites (사전 준비)
@@ -89,3 +118,12 @@
 2. The project uses profiles to manage environments. For local testing, use the local profile.
 3. Configure the application-local.yml with your H2 DB settings.
 4. Run the Application.
+
+## 🌐 Deployment (배포 이미지)
+
+서비스의 안정성과 비용 효율성을 고려하여 하이브리드 클라우드 아키텍처를 구축했습니다.
+
+* **Backend API (Spring Boot):** 
+  * AWS 프리티어 환경에서 가용 메모리 최적화를 위해 Grafana Cloud로 로그를 외부 적재하도록 설계.
+* **AI Microservice (FastAPI):** 
+  * render로 배포하여 Cold Start 있음, 인스턴스 활성화를 통해 응답 지연 최소화 관리.   
