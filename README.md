@@ -126,4 +126,7 @@
 * **Backend API (Spring Boot):** 
   * AWS 프리티어 환경에서 가용 메모리 최적화를 위해 Grafana Cloud로 로그를 외부 적재하도록 설계.
 * **AI Microservice (FastAPI):** 
-  * render로 배포하여 Cold Start 있음, 인스턴스 활성화를 통해 응답 지연 최소화 관리.   
+  * render로 배포하여 Cold Start 있음, 인스턴스 활성화를 통해 응답 지연 최소화 관리.
+* **Grafana Monitoring (with prometheus+loki):**
+  * 로그 모니터링 진행중. discord와 연동해 에러 발생시 알림 발생.
+    <img width="1422" height="722" alt="Image" src="https://github.com/user-attachments/assets/7c00fad1-eae4-463e-933f-f8623a39b041" />     
