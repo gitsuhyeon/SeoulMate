@@ -21,12 +21,11 @@
 
 <img width="4270" height="2235" alt="Image" src="https://github.com/user-attachments/assets/125c48a7-a490-4d62-ac28-369c0b78e4b6" />
 
+### [🇺🇸 English]
+**Seoul Mate** is a comprehensive platform designed to help foreigners and locals create location-based meetups and generate AI-driven, customized tour courses in Seoul. Developed as a 5-member team project, it features a modern Android client built with Jetpack Compose, a robust REST API powered by Spring Boot, and an intelligent AI server utilizing FastAPI.
 
 ### [🇰🇷 Korean]
 **Seoul Mate**는 서울을 방문하는 외국인과 내국인이 함께 지역 기반의 모임을 만들고, AI를 활용해 맞춤형 서울 여행 코스를 생성할 수 있는 플랫폼입니다. 5인의 팀 프로젝트로 진행되었으며, 최신 Android UI 툴킷인 Jetpack Compose와 Spring Boot 기반의 안정적인 REST API, 그리고 FastAPI 기반의 AI 서버를 유기적으로 연동하여 구축되었습니다.
-
-### [🇺🇸 English]
-**Seoul Mate** is a comprehensive platform designed to help foreigners and locals create location-based meetups and generate AI-driven, customized tour courses in Seoul. Developed as a 5-member team project, it features a modern Android client built with Jetpack Compose, a robust REST API powered by Spring Boot, and an intelligent AI server utilizing FastAPI.
 
 ---
 
@@ -72,35 +71,80 @@
 
 ---
 
-## 🧑‍💻 담당 역할 및 기여 (My Contributions)
+## 🧑‍💻 My Contributions(담당 역할 및 기여)
 
 > **Role:** Full-Stack Developer & DevOps  
 > **Key Focus:** 분산 환경 아키텍처 설계, AI 마이크로서비스 연동, 클라이언트-서버 간 통신 및 모니터링 파이프라인 구축
 
 
-### 1. 분산 추적 및 인프라 모니터링 (DevOps & Logging)
-* **분산 환경 Trace-ID 구축:** 클라이언트(Android)부터 Spring Boot, FastAPI까지 이어지는 다중 서버 환경에서 요청 흐름을 추적하기 위해 커스텀 `MdcFilter` 구현. HTTP 헤더에 `X-Trace-Id`를 주입하여 트러블슈팅 시간을 획기적으로 단축.
-* **실시간 모니터링 관제탑(PLG 스택):** Grafana Cloud, Loki, Promtail, Prometheus를 연동하여 서버 메트릭 및 로그 중앙화. 장애 발생 시 Discord Webhook을 통한 실시간 알림 파이프라인 구축.
-* **클라우드 스토리지 비용 방어:** Promtail의 `pipeline_stages`를 튜닝하여 헬스체크(Actuator) 등 불필요한 로그를 정규식으로 필터링(Drop)함으로써 로그 스토리지 비용 최적화.
+### [🇺🇸 English]
 
+### 1. Logging & Monitoring
+- Implemented request tracing using `X-Trace-Id` across Android → Spring Boot → FastAPI
+- Configured centralized logging and metrics with Grafana, Loki, and Prometheus
+- Set up alert notifications using Discord Webhook
+- Filtered unnecessary logs (e.g., health check) to reduce storage usage
 
-### 2. AI 마이크로서비스 및 프롬프트 엔지니어링 (FastAPI & AI)
-* **독립적 AI 추천 엔진 구축:** LangChain과 OpenAI(gpt-4o-mini)를 활용하여 사용자의 여행 코스를 생성하는 FastAPI 마이크로서비스 분리 개발.
-* **데이터 기반 프롬프트 엔지니어링(RAG):** 사용자의 입력(예산, 인원)과 백엔드의 외부 데이터(착한 가격업소 정보, 실시간 혼잡도)를 프롬프트에 동적으로 주입하여 환각 현상(Hallucination)을 줄이고 쾌적한 코스를 추천하도록 최적화.
-* **안정적인 구조화 응답(Structured Output):** Pydantic 모델을 활용하여 AI의 응답을 클라이언트가 즉시 렌더링할 수 있는 규격화된 JSON 형태(`CourseResponse`, `Place`)로 강제 변환 처리.
-
-### 3. 백엔드 아키텍처 및 보안 (Spring Boot)
-* **데이터 배치(Batch) 자동화:** '착한 가격업소' 공공데이터를 매월 1일 새벽 3시에 Spring Scheduler를 통해 자동 업데이트하도록 설계. 지역명 기반 동적 프롬프트 매핑을 위한 데이터 정제 및 카테고리화 적용.
-* **Stateless 인증 필터 구현:** Firebase Admin SDK를 활용한 `FirebaseTokenFilter`를 직접 구현하여 JWT 검증 및 SecurityContext 인증 처리. 만료된 토큰에 대한 커스텀 401 예외 처리로 클라이언트 사용성 증대.
-* **API Rate Limiting (호출 제한):** 과도한 AI API 과금을 방지하기 위해 Bucket4j와 HandlerInterceptor를 도입하여 일일 호출 횟수 제한 로직 적용. 개발자 프리패스(Bypass) 로직을 병행하여 운영 안정성 확보.
-
-### 4. 프론트엔드 아키텍처 및 UI/UX (Android)
-* **클라이언트 아키텍처 제안:** MVVM 패턴과 Dagger Hilt(DI) 도입을 팀 내에 제안하고 초기 아키텍처를 세팅.
-* **NetworkModule 설계:** Retrofit 기반의 REST API 통신 모듈을 구축하고, 모든 API 요청에 자동으로 `X-Trace-Id`와 인증 토큰이 포함되도록 OkHttp Interceptor 구현.
-* **탄력적인 클라이언트 에러 핸들링:** AI 서버의 응답 지연(Timeout), 429(Too Many Requests), 401(Unauthorized) 등 예외 상황을 ViewModel과 Kotlin Flow를 활용해 캐치하여 직관적인 팝업/토스트로 처리.
-* **글로벌 서비스 대응(i18n):** Locale 설정을 적용하여 사용자의 국적 선택에 따라 UI 언어가 동적으로 변경되도록 다국어 처리 구현. 
-* **회원가입/로그인 화면 구현:** 회원가입 및 로그인 흐름(UI/API) End-to-End 완성.
 ---
+
+### 2. AI Service Integration (FastAPI)
+- Developed a separate FastAPI service for AI-based course recommendation
+- Integrated OpenAI API for generating travel courses
+- Structured responses using Pydantic models for consistent API output
+- Composed prompts using user input and external data
+
+---
+
+### 3. Backend (Spring Boot)
+- Implemented scheduled batch processing for public data updates
+- Developed Firebase JWT authentication filter
+- Applied API rate limiting using interceptor-based logic
+
+---
+
+### 4. Android Client
+- Set up MVVM architecture and introduced Hilt for dependency injection
+- Implemented network layer using Retrofit and OkHttp Interceptor
+- Added handling for server errors (Timeout, 401, 429)
+- Implemented internationalization (i18n)
+- Developed login and signup flow
+
+---
+### [🇰🇷 Korean]
+
+### 1. 로깅 및 모니터링
+- Android → Spring Boot → FastAPI 간 요청 추적을 위한 `X-Trace-Id` 적용
+- Grafana, Loki, Prometheus 기반 로그 및 메트릭 수집 환경 구성
+- Discord Webhook 알림 설정
+- 헬스체크 로그 등 불필요 로그 필터링 적용
+
+---
+
+### 2. AI 서비스 연동 (FastAPI)
+- AI 추천 기능을 별도 FastAPI 서비스로 분리 구현
+- OpenAI API 연동
+- Pydantic 기반 구조화된 응답 처리
+- 사용자 입력 및 외부 데이터를 활용한 프롬프트 구성
+
+---
+
+### 3. 백엔드 (Spring Boot)
+- 공공데이터 배치 처리 (Scheduler 기반)
+- Firebase JWT 인증 필터 구현
+- API 호출 제한 로직 적용
+
+---
+
+### 4. Android 클라이언트
+- MVVM 아키텍처 적용 및 Hilt 도입
+- Retrofit + OkHttp 기반 네트워크 구성
+- Timeout, 401, 429 에러 처리
+- 다국어(i18n) 적용
+- 로그인/회원가입 기능 구현
+
+---
+
+
 
 ## 🛠 Getting Started (실행 방법)
 
@@ -120,10 +164,8 @@
 4. Build and run on an Emulator or physical device.
 
 ### 2. Spring Boot Setup
-1. Navigate to the backend directory.
-2. The project uses profiles to manage environments. For local testing, use the local profile.
-3. Configure the application-local.yml with your H2 DB settings.
-4. Run the Application.
+- The backend server is currently deployed on AWS for internal testing (alpha stage).
+- Due to security reasons, the deployment endpoint is not publicly shared.
 
 ## 🌐 Deployment (배포 이미지)
 
